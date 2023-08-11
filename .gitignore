@@ -160,8 +160,8 @@ cython_debug/
 #.idea/
 
 # Files used as draft for the problems
-.txt
+*.txt
 
 # Files used as tests input and output
-.in
-.out
+*.in
+*.out
