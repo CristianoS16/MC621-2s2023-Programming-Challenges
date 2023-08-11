@@ -5,4 +5,3 @@ Deatline 27/11
 
 Planilha é automatica agr
 Não conta presença
-senha: maratona-unicamp
