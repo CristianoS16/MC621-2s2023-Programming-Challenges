@@ -1,29 +1,29 @@
 # Calcula the GCD
-def get_gcd(number_1, number_2):
-    while(number_2 != 0):
-        rest = number_1 % number_2
-        number_1 = number_2
-        number_2 = rest
+def get_gcd(a, b):
+    while(b != 0):
+        rest = a % b
+        a = b
+        b = rest
 
-    return number_1
+    return a
 
 # Calculates the extended euclides coefficient as seen in class
 
 
-def extended_euclid(number_1, number_2):
-    if number_2 == 0:
-        return 1, 0, number_1
-    x0, y0, d = extended_euclid(number_2, number_1 % number_2)
-    y1 = x0 - (a//b) * y0
-    return x0, y1, d
+def extended_euclid(a, b):
+    if b == 0:
+        return 1, 0, a
+    x0, y0, d = extended_euclid(b, a % b)
+    return y0,  (x0 - (a//b) * y0), d
 
 
 while True:
     try:
         a, b = map(int, input().split())
 
-        # Ax + by = C leads to linear congruence Ax ≡ C (mod b).
+        # ax + by = c leads to linear congruence ax ≡ c (mod b).
         d = get_gcd(a, b)
+        # Find Bézout coefficients
         x1, y1, d = extended_euclid(a, b)
 
         print(x1, y1, d)
