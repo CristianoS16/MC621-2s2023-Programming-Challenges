@@ -1,10 +1,13 @@
+from sys import stdin
+
+# Implementation of the LPS algorithm as shown in class
 def compute_lps_array(sentence, pattern):
     lps = [0] * len(pattern)
     lps_len = 0
 
     i = 1
     while(i < len(pattern)):
-        if(sentence[i] == sentence[lps_len]):
+        if(pattern[i] == pattern[lps_len]):
             lps_len += 1
             lps[i] = lps_len
             i += 1
@@ -16,13 +19,11 @@ def compute_lps_array(sentence, pattern):
                 i += 1
     return lps
 
-
+# Implementation of Algotmo KMP as seen in class
 def kmp_search(sentence, pattern):
     sentence_len = len(sentence)
     pattern_len = len(pattern)
     lps = compute_lps_array(sentence, pattern)
-    found_patterns = []
-    print("lps: ", lps)
 
     sentence_idx, pattern_idx = 0, 0
     while(sentence_idx < sentence_len):
@@ -30,8 +31,8 @@ def kmp_search(sentence, pattern):
             sentence_idx += 1
             pattern_idx += 1
         if(pattern_idx == pattern_len):
-            print(f"Found pattern at index {sentence_idx-pattern_idx}")
-            found_patterns.append(sentence_idx-pattern_idx)
+            # Returns True when you first find the pattern
+            return True
             pattern_idx = lps[pattern_idx-1]
         else:
             if sentence_idx < sentence_len and sentence[sentence_idx] != pattern[pattern_idx]:
@@ -39,9 +40,10 @@ def kmp_search(sentence, pattern):
                     pattern_idx = lps[pattern_idx-1]
                 else:
                     sentence_idx += 1
-    return found_patterns
+    # Returns fake if you don't find the pattern
+    return False
 
 
-sentence_test = "AAAAABAAABA"
-pattern_test = "AAA"
-print(kmp_search(sentence_test, pattern_test))
+for line in stdin:
+    # Makes String in Lowercase to facilitate the search
+    print("yes" if kmp_search(line.upper(), 'PROBLEM') else "no")
