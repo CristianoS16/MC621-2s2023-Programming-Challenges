@@ -20,6 +20,8 @@ def compute_lps_array(sentence, pattern):
 def kmp_search(sentence, pattern):
     sentence_len = len(sentence)
     pattern_len = len(pattern)
+    if pattern_len > sentence_len:
+        return []
     lps = compute_lps_array(sentence, pattern)
     found_patterns = []
     print("lps: ", lps)
