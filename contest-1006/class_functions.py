@@ -44,6 +44,9 @@ def kmp_search(sentence, pattern):
     return found_patterns
 
 
-sentence_test = "AAAAABAAABA"
-pattern_test = "AAA"
+# sentence_test = "AAAAABAAABA"
+# pattern_test = "AAA"
+
+pattern_test = "ABANABAN"
+sentence_test = pattern_test * 2
 print(kmp_search(sentence_test, pattern_test))
