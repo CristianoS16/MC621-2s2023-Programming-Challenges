@@ -5,9 +5,6 @@ def cross(a, b):
     return a[0] * b[1] - a[1] * b[0]
 
 
-# Outra maneira de calcular o produto cruzado escalar
-# Nota: Para aceitar pontos colineares, precisamos mudar o > 0
-# Retorna True se o ponto está do lado esquerdo da linha pq
 def ccw(p, q, r):
     return cross((q[0] - p[0], q[1] - p[1]), (r[0] - p[0], r[1] - p[1])) > 0
 
